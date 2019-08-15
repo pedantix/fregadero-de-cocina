@@ -4,12 +4,12 @@
 import PackageDescription
 
 let package = Package(
-    name: "fregadero-de-cocina",
+    name: "FregaderoDeCocina",
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
-            name: "fregadero-de-cocina",
-            targets: ["fregadero-de-cocina"]),
+            name: "FregaderoDeCocina",
+            targets: ["FregaderoDeCocina"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -20,10 +20,10 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
-            name: "fregadero-de-cocina",
+            name: "FregaderoDeCocina",
             dependencies: []),
         .testTarget(
             name: "fregadero-de-cocinaTests",
-            dependencies: ["fregadero-de-cocina", "Nimble", "Quick"]),
+            dependencies: ["FregaderoDeCocina", "Nimble", "Quick"]),
     ]
 )

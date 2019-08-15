@@ -9,7 +9,7 @@ import Foundation
 import XCTest
 import Quick
 import Nimble
-import fregadero_de_cocina
+import FregaderoDeCocina
 
 final class StringTests: QuickSpec {
   override func spec() {
