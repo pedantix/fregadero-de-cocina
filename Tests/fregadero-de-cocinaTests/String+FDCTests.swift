@@ -7,22 +7,34 @@
 
 import Foundation
 import XCTest
-import Quick
-import Nimble
 import FregaderoDeCocina
 
-final class StringTests: QuickSpec {
-  override func spec() {
-    describe("isBlank") {
-      it ("should not be blank for 'a'") {
-        expect("a".isBlank).to(equal(false))
-      }
 
-      ["", " ", "\n", "\t"].forEach { str in
-        it ("should be blank for '\(str)'") {
-          expect(str.isBlank).to(equal(true))
-        }
-      }
+final class StringTests: XCTestCase {
+    func testIsBlankIsFalse() {
+        XCTAssertFalse("a".isBlank)
     }
-  }
+
+    func testIsBlankIsTrue() {
+        ["", " ", "\n", "\t"].forEach { str in
+            XCTAssertTrue(str.isBlank)
+        }
+    }
+
+    func testTrimmedNoopCase() {
+        let expected = "dog and cat"
+        XCTAssertEqual(expected.trimmed, expected)
+    }
+
+    func testTrimmedTrailingCase() {
+        let expected = "dog and cat"
+        let sample = "dog and cat "
+        XCTAssertEqual(sample.trimmed, expected)
+    }
+
+    func testTrimmedLeadingCase() {
+        let expected = "dog and cat"
+        let sample = " dog and cat"
+        XCTAssertEqual(sample.trimmed, expected)
+    }
 }

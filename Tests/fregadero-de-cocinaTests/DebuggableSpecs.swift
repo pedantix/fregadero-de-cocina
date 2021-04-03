@@ -5,8 +5,7 @@
 //  Created by Shaun Hubbard on 8/20/19.
 //
 
-import Quick
-import Nimble
+import XCTest
 import FregaderoDeCocina
 
 final class DebuggableExample: Debuggable {
@@ -40,18 +39,14 @@ final class DebuggableExample: Debuggable {
   }
 }
 
-final class DebuggableSpecs: QuickSpec {
-  override func spec() {
-    describe(".init") {
-      it ("should auto capture most information") {
+final class DebuggableSpecs: XCTestCase {
+    func testInit() {
         let debug = DebuggableExample(identifier: "my ident", reason: "because", suggestedFixes: ["Try something"])
-        expect(debug.identifier).to(equal("my ident"))
-        expect(debug.reason).to(equal("because"))
-        expect(debug.description).notTo(beEmpty())
-        expect(debug.debugDescription).notTo(beEmpty())
-        expect(debug.failureReason).notTo(beEmpty())
-        expect(debug.errorDescription).notTo(beEmpty())
-      }
+        XCTAssertEqual(debug.identifier, "my ident")
+        XCTAssertEqual(debug.reason, "because")
+        XCTAssertFalse(debug.description.isEmpty)
+        XCTAssertFalse(debug.debugDescription.isEmpty)
+        XCTAssertFalse(debug.failureReason?.isEmpty ?? false)
+        XCTAssertFalse(debug.errorDescription?.isEmpty ?? false)
     }
-  }
 }

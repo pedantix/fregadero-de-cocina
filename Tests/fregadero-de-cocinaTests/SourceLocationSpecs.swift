@@ -6,20 +6,15 @@
 //
 
 import Foundation
-import Quick
-import Nimble
 import FregaderoDeCocina
+import XCTest
 
-final class SourceLocationSpecs: QuickSpec {
-  override func spec() {
-    describe(".init") {
-      it ("should auto capture source information") {
+final class SourceLocationSpecs: XCTestCase {
+    func testInit() {
         let sourceLoc = SourceLocation.capture()
-        expect(sourceLoc.column).to(equal(47))
-        expect(sourceLoc.line).to(equal(17))
-        expect(sourceLoc.file).to(contain("SourceLocationSpecs.swift"))
-        expect(sourceLoc.function).to(equal("spec()"))
-      }
+        XCTAssertEqual(sourceLoc.column, 47)
+        XCTAssertEqual(sourceLoc.line, 14)
+        XCTAssertTrue(sourceLoc.file.contains("SourceLocationSpecs.swift"))
+        XCTAssertEqual(sourceLoc.function, "testInit()")
     }
-  }
 }

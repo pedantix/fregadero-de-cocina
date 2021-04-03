@@ -8,8 +8,12 @@
 import Foundation
 
 extension String {
-  /// Checks if a string is empty or only contains whitespace.
-  public var isBlank: Bool {
-    return self.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-  }
+    /// Checks if a string is empty or only contains whitespace.
+    public var isBlank: Bool {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
+    public var trimmed: String {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
 }
